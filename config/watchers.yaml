@@ -1,0 +1,46 @@
+# Digital FTE - Watcher Configuration
+
+watchers:
+  gmail:
+    enabled: true
+    module: "src.watchers.gmail_watcher"
+    class: "GmailWatcher"
+    poll_interval_seconds: 60
+    credentials_env: "GOOGLE_CREDENTIALS_PATH"
+    token_env: "GOOGLE_TOKEN_PATH"
+    target_inbox: "Inbox/Email"
+    max_results_per_poll: 20
+
+  whatsapp:
+    enabled: false
+    module: "src.watchers.whatsapp_watcher"
+    class: "WhatsAppWatcher"
+    poll_interval_seconds: 30
+    api_url_env: "WHATSAPP_API_URL"
+    phone_number_id_env: "WHATSAPP_PHONE_NUMBER_ID"
+    access_token_env: "WHATSAPP_ACCESS_TOKEN"
+    target_inbox: "Inbox/WhatsApp"
+
+  banking:
+    enabled: false
+    module: "src.watchers.banking_watcher"
+    class: "BankingWatcher"
+    poll_interval_seconds: 300
+    odoo_url_env: "ODOO_URL"
+    odoo_db_env: "ODOO_DB"
+    odoo_user_env: "ODOO_USER"
+    odoo_password_env: "ODOO_PASSWORD"
+    target_inbox: "Inbox/Banking"
+
+  filesystem:
+    enabled: true
+    module: "src.watchers.filesystem_watcher"
+    class: "FilesystemWatcher"
+    watch_paths:
+      - "D:\\hackaton0\\vault\\Inbox\\Filesystem"
+    target_inbox: "Inbox/Filesystem"
+    file_patterns:
+      - "*.pdf"
+      - "*.docx"
+      - "*.xlsx"
+      - "*.csv"

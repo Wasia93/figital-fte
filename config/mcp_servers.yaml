@@ -1,0 +1,61 @@
+# Digital FTE - MCP Server Registry
+
+servers:
+  gmail:
+    name: "Gmail MCP Server"
+    module: "src.mcp_servers.gmail_mcp"
+    transport: "stdio"
+    tools:
+      - send_email
+      - create_draft
+      - search_emails
+      - get_email_thread
+
+  linkedin:
+    name: "LinkedIn MCP Server"
+    module: "src.mcp_servers.linkedin_mcp"
+    transport: "stdio"
+    tools:
+      - create_post
+      - create_comment
+      - get_profile_stats
+      - get_recent_posts
+
+  whatsapp:
+    name: "WhatsApp MCP Server"
+    module: "src.mcp_servers.whatsapp_mcp"
+    transport: "stdio"
+    tools:
+      - send_message
+      - get_messages
+      - send_template
+
+  odoo:
+    name: "Odoo MCP Server"
+    module: "src.mcp_servers.odoo_mcp"
+    transport: "stdio"
+    tools:
+      - search_invoices
+      - create_invoice
+      - get_account_balance
+      - record_payment
+      - get_transactions
+
+  calendar:
+    name: "Google Calendar MCP Server"
+    module: "src.mcp_servers.calendar_mcp"
+    transport: "stdio"
+    tools:
+      - get_events
+      - create_event
+      - check_availability
+
+  filesystem:
+    name: "Filesystem MCP Server"
+    module: "src.mcp_servers.filesystem_mcp"
+    transport: "stdio"
+    tools:
+      - read_file
+      - write_file
+      - list_directory
+      - move_file

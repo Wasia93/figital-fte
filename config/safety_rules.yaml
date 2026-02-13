@@ -1,0 +1,102 @@
+# Digital FTE - HITL Safety Rules
+# Defines which actions require human approval before execution
+
+approval_rules:
+  # Email
+  send_email:
+    requires_approval: true
+    description: "Sending any email on behalf of the user"
+    risk_level: "medium"
+  create_draft:
+    requires_approval: false
+    description: "Creating an email draft (does not send)"
+    risk_level: "low"
+
+  # Social Media
+  create_post:
+    requires_approval: true
+    description: "Publishing content to social media"
+    risk_level: "high"
+  create_comment:
+    requires_approval: true
+    description: "Commenting on social media posts"
+    risk_level: "medium"
+
+  # Finance
+  create_invoice:
+    requires_approval: true
+    description: "Creating a new invoice"
+    risk_level: "high"
+  record_payment:
+    requires_approval: true
+    description: "Recording a payment transaction"
+    risk_level: "high"
+
+  # Calendar
+  create_event:
+    requires_approval: true
+    description: "Creating a calendar event"
+    risk_level: "medium"
+
+  # WhatsApp
+  send_message:
+    requires_approval: true
+    description: "Sending a WhatsApp message"
+    risk_level: "medium"
+
+  # Filesystem
+  write_file:
+    requires_approval: false
+    description: "Writing files within the vault"
+    risk_level: "low"
+  move_file:
+    requires_approval: false
+    description: "Moving files within the vault"
+    risk_level: "low"
+
+  # Read-only operations never need approval
+  search_emails:
+    requires_approval: false
+    risk_level: "none"
+  get_email_thread:
+    requires_approval: false
+    risk_level: "none"
+  get_events:
+    requires_approval: false
+    risk_level: "none"
+  check_availability:
+    requires_approval: false
+    risk_level: "none"
+  get_profile_stats:
+    requires_approval: false
+    risk_level: "none"
+  get_recent_posts:
+    requires_approval: false
+    risk_level: "none"
+  search_invoices:
+    requires_approval: false
+    risk_level: "none"
+  get_account_balance:
+    requires_approval: false
+    risk_level: "none"
+  get_transactions:
+    requires_approval: false
+    risk_level: "none"
+  read_file:
+    requires_approval: false
+    risk_level: "none"
+  list_directory:
+    requires_approval: false
+    risk_level: "none"
+  get_messages:
+    requires_approval: false
+    risk_level: "none"
+
+# Default for unknown actions
+default_requires_approval: true
+default_risk_level: "high"
+
+# Emergency stop
+emergency_stop:
+  file: "EMERGENCY_STOP.md"
+  description: "Create this file in vault root to halt all operations immediately"

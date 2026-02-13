@@ -1,0 +1,71 @@
+# Digital FTE - Agent Definitions and Routing
+
+agents:
+  triage:
+    name: "Triage Agent"
+    module: "src.agents.triage_agent"
+    class: "TriageAgent"
+    handles:
+      - "Inbox/*"
+    skills: ["classify_email"]
+    mcp_servers: []
+    approval_required: false
+
+  email:
+    name: "Email Agent"
+    module: "src.agents.email_agent"
+    class: "EmailAgent"
+    handles:
+      - "Needs_Action/Email"
+    skills: ["draft_email", "classify_email", "extract_action_items", "apply_brand_voice"]
+    mcp_servers: ["gmail"]
+    approval_required: true
+
+  social:
+    name: "Social Agent"
+    module: "src.agents.social_agent"
+    class: "SocialAgent"
+    handles:
+      - "Needs_Action/Social"
+    skills: ["generate_post", "schedule_post", "analyze_engagement", "apply_brand_voice"]
+    mcp_servers: ["linkedin"]
+    approval_required: true
+
+  finance:
+    name: "Finance Agent"
+    module: "src.agents.finance_agent"
+    class: "FinanceAgent"
+    handles:
+      - "Needs_Action/Finance"
+    skills: ["categorize_transaction", "generate_invoice", "reconcile_accounts", "detect_anomaly"]
+    mcp_servers: ["odoo"]
+    approval_required: true
+
+  scheduler:
+    name: "Scheduler Agent"
+    module: "src.agents.scheduler_agent"
+    class: "SchedulerAgent"
+    handles:
+      - "Needs_Action/General"
+    skills: []
+    mcp_servers: ["calendar"]
+    approval_required: true
+
+  ceo_briefing:
+    name: "CEO Briefing Agent"
+    module: "src.agents.ceo_briefing_agent"
+    class: "CEOBriefingAgent"
+    handles: []
+    skills: ["summarize_document", "generate_report", "search_vault"]
+    mcp_servers: ["gmail"]
+    approval_required: false
+    schedule: "monday 07:00"
+
+# Routing rules: source -> agent
+routing:
+  Email: "email"
+  WhatsApp: "email"
+  Banking: "finance"
+  Filesystem: "general"
+  Social: "social"
+  Calendar: "scheduler"

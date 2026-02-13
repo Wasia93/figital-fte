@@ -1,0 +1,26 @@
+# Digital FTE - Master Configuration
+
+vault:
+  path: "D:\\hackaton0\\vault"
+  archive_format: "{year}/{month}"  # Done/YYYY/MM/
+
+orchestrator:
+  interval_seconds: 30
+  max_items_per_iteration: 10
+  emergency_stop_file: "EMERGENCY_STOP.md"
+  log_iterations: true
+
+logging:
+  level: "INFO"
+  log_to_vault: true
+  log_dir: "Logs"
+  max_log_age_days: 30
+
+dashboard:
+  auto_refresh: true
+  refresh_interval_seconds: 60
+  file: "Dashboard.md"
+
+briefing:
+  schedule: "monday 07:00"
+  file: "Weekly_Briefing.md"
